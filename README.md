@@ -1,6 +1,6 @@
-# VM Pathways Intake Widget for Shopify
+# VM Pathways Web Widget
 
-This folder contains a simple HTML, CSS, and JavaScript implementation of the VM Pathways intake flow. The widget can be embedded into a Shopify site to collect customer preferences and provide product recommendations.
+This repository contains a web-based intake widget for VM Pathways that collects customer preferences and provides AI-powered product recommendations using OpenAI's Assistant API. The widget is designed to be embedded into websites, including Shopify stores.
 
 ## Files Included
 
@@ -8,17 +8,39 @@ This folder contains a simple HTML, CSS, and JavaScript implementation of the VM
 - `styles.css` - Styling for the widget
 - `script.js` - JavaScript functionality for the widget
 - `logo.png` - Placeholder for the VM Pathways logo (replace with your actual logo)
+- `config.js` - Configuration file for API keys and sensitive information (not included in repository)
+- `.env.example` - Example environment variables template
+- `.gitignore` - Specifies files to be ignored by Git
 
-## How to Embed in Shopify
+## Setup Instructions
 
-### Option 1: Custom HTML Section
+### 1. Configuration
+
+Before using the widget, you need to set up your OpenAI API credentials:
+
+1. Create a `config.js` file in the root directory (use the structure from `.env.example`)
+2. Add your OpenAI API key and Assistant ID to the config file:
+
+```javascript
+// Configuration file for API keys and sensitive information
+// This file should not be committed to version control
+
+const CONFIG = {
+    OPENAI_API_KEY: 'your-openai-api-key',
+    OPENAI_ASSISTANT_ID: 'your-openai-assistant-id'
+};
+```
+
+### 2. How to Embed in Shopify
+
+#### Option 1: Custom HTML Section
 
 1. In your Shopify admin, go to **Online Store** > **Themes**
 2. Click **Customize** on your current theme
 3. Add a new section and select **Custom HTML**
-4. Copy the contents of all three files into the HTML editor:
+4. Copy the contents of all files into the HTML editor:
    - Wrap CSS in `<style>` tags
-   - Wrap JavaScript in `<script>` tags
+   - Wrap JavaScript in `<script>` tags (include both config.js and script.js)
    - Add the HTML content
 5. Save your changes
 
