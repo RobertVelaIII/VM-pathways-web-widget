@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VM Pathways Intake Widget</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="vm-pathways-widget">
+        <div class="widget-header">
+            <img src="logo.png" alt="VM Pathways Logo" class="logo">
+        </div>
+        
+        <div class="progress-container">
+            <div class="progress-bar">
+                <div class="progress-fill" id="progress-fill"></div>
+            </div>
+            <div class="step-counter" id="step-counter">Step 1 of 6</div>
+        </div>
+        
+        <div class="step-title" id="step-title">General Health Context</div>
+        
+        <div class="step-content">
+            <!-- Step content will be dynamically inserted here -->
+            <div id="step-1" class="step active">
+                <div class="question">
+                    <h3>Are you seeking relief for a specific condition or general wellness?</h3>
+                    <input type="text" id="seeking-relief-for" class="text-input" placeholder="Enter your response">
+                </div>
+                
+                <div class="question">
+                    <h3>Have you ever used cannabis products before?</h3>
+                    <div class="radio-options">
+                        <label class="radio-option">
+                            <input type="radio" name="cannabis-use" value="Never">
+                            <span class="radio-label">Never</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="cannabis-use" value="Rarely">
+                            <span class="radio-label">Rarely</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="cannabis-use" value="Occasionally">
+                            <span class="radio-label">Occasionally</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="cannabis-use" value="Regularly">
+                            <span class="radio-label">Regularly</span>
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="question">
+                    <h3>Are you currently taking any prescription medications or supplements?</h3>
+                    <div class="toggle-container">
+                        <label class="toggle">
+                            <input type="checkbox" id="taking-medications">
+                            <span class="toggle-slider"></span>
+                        </label>
+                    </div>
+                    
+                    <div id="medications-details" class="hidden">
+                        <p class="subheading">Please list your medications (optional)</p>
+                        <p class="note">Note: This information is kept private and only used to provide better recommendations.</p>
+                        <textarea id="medications-list" placeholder="Enter your medications here..."></textarea>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="step-2" class="step">
+                <div class="question">
+                    <h3>Which of the following best describes the issue(s) you want to address?</h3>
+                    <p class="subheading">Select all that apply</p>
+                    
+                    <div class="checkbox-options">
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="symptoms" value="Pain">
+                            <span class="checkbox-label">Pain</span>
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="symptoms" value="Anxiety">
+                            <span class="checkbox-label">Anxiety</span>
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="symptoms" value="Insomnia">
+                            <span class="checkbox-label">Insomnia</span>
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="symptoms" value="Inflammation">
+                            <span class="checkbox-label">Inflammation</span>
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="symptoms" value="Nausea">
+                            <span class="checkbox-label">Nausea</span>
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="symptoms" value="Stress">
+                            <span class="checkbox-label">Stress</span>
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="symptoms" value="Depression">
+                            <span class="checkbox-label">Depression</span>
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="symptoms" value="Other">
+                            <span class="checkbox-label">Other</span>
+                        </label>
+                    </div>
+                    
+                    <div id="other-symptom-container" class="hidden">
+                        <input type="text" id="other-symptom" class="text-input" placeholder="Please specify">
+                    </div>
+                </div>
+                
+                <div class="question">
+                    <h3>How severe are your symptoms right now?</h3>
+                    <div class="severity-options">
+                        <button class="severity-btn" data-value="Mild">Mild</button>
+                        <button class="severity-btn" data-value="Moderate">Moderate</button>
+                        <button class="severity-btn" data-value="Severe">Severe</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="step-3" class="step">
+                <div class="question">
+                    <h3>What's your preferred method of consumption?</h3>
+                    <p class="subheading">Select all that apply</p>
+                    
+                    <div class="checkbox-options">
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="consumption-method" value="Edibles">
+                            <span class="checkbox-label">Edibles</span>
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="consumption-method" value="Tinctures">
+                            <span class="checkbox-label">Tinctures</span>
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="consumption-method" value="Topicals">
+                            <span class="checkbox-label">Topicals</span>
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="consumption-method" value="Capsules">
+                            <span class="checkbox-label">Capsules</span>
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="consumption-method" value="No preference">
+                            <span class="checkbox-label">No preference</span>
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="question">
+                    <h3>How often do you plan to use the product?</h3>
+                    <div class="radio-options">
+                        <label class="radio-option">
+                            <input type="radio" name="usage-frequency" value="Daily">
+                            <span class="radio-label">Daily</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="usage-frequency" value="Several times a week">
+                            <span class="radio-label">Several times a week</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="usage-frequency" value="Weekly">
+                            <span class="radio-label">Weekly</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="usage-frequency" value="Occasionally">
+                            <span class="radio-label">Occasionally</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="usage-frequency" value="As needed">
+                            <span class="radio-label">As needed</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="step-4" class="step">
+                <div class="question">
+                    <h3>Which product types are you most interested in?</h3>
+                    <p class="subheading">Select all that apply</p>
+                    
+                    <div class="checkbox-options">
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="product-type" value="Full Spectrum">
+                            <span class="checkbox-label">Full Spectrum</span>
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="product-type" value="Broad Spectrum">
+                            <span class="checkbox-label">Broad Spectrum</span>
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="product-type" value="Isolate">
+                            <span class="checkbox-label">Isolate</span>
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="product-type" value="Not sure">
+                            <span class="checkbox-label">Not sure</span>
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="question">
+                    <h3>Do you have a preferred potency level?</h3>
+                    <div class="radio-options">
+                        <label class="radio-option">
+                            <input type="radio" name="potency" value="Low">
+                            <span class="radio-label">Low</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="potency" value="Medium">
+                            <span class="radio-label">Medium</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="potency" value="High">
+                            <span class="radio-label">High</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="potency" value="Not sure">
+                            <span class="radio-label">Not sure</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="step-5" class="step">
+                <div class="question">
+                    <h3>What effects are you looking for?</h3>
+                    <p class="subheading">Select all that apply</p>
+                    
+                    <div class="checkbox-options">
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="desired-effects" value="Pain relief">
+                            <span class="checkbox-label">Pain relief</span>
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="desired-effects" value="Relaxation">
+                            <span class="checkbox-label">Relaxation</span>
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="desired-effects" value="Sleep aid">
+                            <span class="checkbox-label">Sleep aid</span>
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="desired-effects" value="Reduced anxiety">
+                            <span class="checkbox-label">Reduced anxiety</span>
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="desired-effects" value="Mood enhancement">
+                            <span class="checkbox-label">Mood enhancement</span>
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="desired-effects" value="Focus">
+                            <span class="checkbox-label">Focus</span>
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="desired-effects" value="Anti-inflammatory">
+                            <span class="checkbox-label">Anti-inflammatory</span>
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="question">
+                    <h3>Are there any effects you want to avoid?</h3>
+                    <div class="checkbox-options">
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="avoid-effects" value="Drowsiness">
+                            <span class="checkbox-label">Drowsiness</span>
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="avoid-effects" value="Dry mouth">
+                            <span class="checkbox-label">Dry mouth</span>
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="avoid-effects" value="Increased anxiety">
+                            <span class="checkbox-label">Increased anxiety</span>
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="avoid-effects" value="Dizziness">
+                            <span class="checkbox-label">Dizziness</span>
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="avoid-effects" value="None">
+                            <span class="checkbox-label">None</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="step-6" class="step">
+                <div class="question">
+                    <h3>Do you have any budget considerations?</h3>
+                    <div class="radio-options">
+                        <label class="radio-option">
+                            <input type="radio" name="budget" value="Economy">
+                            <span class="radio-label">Economy</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="budget" value="Mid-range">
+                            <span class="radio-label">Mid-range</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="budget" value="Premium">
+                            <span class="radio-label">Premium</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="budget" value="No preference">
+                            <span class="radio-label">No preference</span>
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="question">
+                    <h3>Is there anything else you'd like us to know?</h3>
+                    <textarea id="additional-info" placeholder="Enter any additional information here..."></textarea>
+                </div>
+            </div>
+        </div>
+        
+        <div class="navigation-buttons">
+            <button id="back-btn" class="btn secondary-btn" disabled>Back</button>
+            <button id="next-btn" class="btn primary-btn">Next</button>
+        </div>
+        
+        <!-- Recommendation Modal -->
+        <div id="recommendation-modal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>Your Recommendation</h2>
+                    <span class="close-modal">&times;</span>
+                </div>
+                <div class="modal-body">
+                    <div class="loading-spinner" id="loading-spinner">
+                        <div class="spinner"></div>
+                        <p>Analyzing your responses...</p>
+                    </div>
+                    
+                    <div id="recommendation-result" class="hidden">
+                        <div class="recommendation-header">
+                            <div class="recommendation-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+                                    <path d="M2 17l10 5 10-5"></path>
+                                    <path d="M2 12l10 5 10-5"></path>
+                                </svg>
+                            </div>
+                            <h3 id="product-name">Product Name</h3>
+                        </div>
+                        <div class="recommendation-content">
+                            <p id="product-description">Product description will appear here.</p>
+                        </div>
+                        <div class="recommendation-actions">
+                            <a href="#" id="product-link" class="btn primary-btn">View Product</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button id="done-btn" class="btn primary-btn">Done</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="config.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
